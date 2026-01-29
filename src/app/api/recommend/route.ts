@@ -39,7 +39,7 @@ Return exactly 8 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
 
     // Call Mistral API with JSON mode
     const chatResponse = await mistral.chat.complete({
-      model: "ministral-8b-latest",
+      model: "ministral-14b-latest",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userMessage },
@@ -81,7 +81,9 @@ Return exactly 8 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
     // If we got no fonts, return an error
     if (selectedFonts.length === 0) {
       return NextResponse.json(
-        { error: "Could not find matching fonts. Try a different description." },
+        {
+          error: "Could not find matching fonts. Try a different description.",
+        },
         { status: 400 },
       );
     }
