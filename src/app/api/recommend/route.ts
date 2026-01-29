@@ -1,21 +1,8 @@
 import { NextResponse } from "next/server";
-import { fetchAllFonts, type GoogleFont } from "@/lib/google-fonts";
+import { Mistral } from "@mistralai/mistralai";
+import { fetchAllFonts } from "@/lib/google-fonts";
 
-const CEREBRAS_API_URL = "https://api.cerebras.ai/v1/chat/completions";
-
-// JSON Schema for structured output
-const fontResponseSchema = {
-  type: "object",
-  properties: {
-    fonts: {
-      type: "array",
-      items: { type: "string" },
-      description: "Array of exactly 8 font family names"
-    }
-  },
-  required: ["fonts"],
-  additionalProperties: false
-};
+const mistral = new Mistral({ apiKey: process.env.MISTRAL_API_KEY });
 
 export async function POST(request: Request) {
   try {
@@ -39,6 +26,7 @@ RULES:
 - Return EXACTLY 8 font names, no more, no less
 - Only use fonts from the provided list
 - Mix display fonts with body fonts for variety
+- Return as JSON object with "fonts" array
 
 Consider mood, use case, and visual style when selecting.`;
 
@@ -47,60 +35,38 @@ Consider mood, use case, and visual style when selecting.`;
 Available fonts:
 ${fontNames.slice(0, 400).join(", ")}
 
-Return exactly 8 font names as a JSON array.`;
+Return exactly 8 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
 
-    // Call Cerebras API with structured outputs
-    const response = await fetch(CEREBRAS_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.CEREBRAS_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "llama3.1-8b",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userMessage },
-        ],
-        response_format: {
-          type: "json_schema",
-          json_schema: {
-            name: "font_recommendations",
-            strict: true,
-            schema: fontResponseSchema
-          }
-        },
-        temperature: 0.7,
-        max_tokens: 500,
-      }),
+    // Call Mistral API with JSON mode
+    const chatResponse = await mistral.chat.complete({
+      model: "ministral-8b-latest",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
+      ],
+      responseFormat: { type: "json_object" },
+      temperature: 0.7,
+      maxTokens: 500,
     });
 
-    if (!response.ok) {
-      const errorData = await response.text();
-      console.error("Cerebras API error:", response.status, errorData);
-      if (response.status === 429) {
-        return NextResponse.json(
-          { error: "Rate limited. Please try again in a moment." },
-          { status: 429 },
-        );
-      }
+    const content = chatResponse.choices?.[0]?.message?.content;
+
+    if (!content || typeof content !== "string") {
+      console.error("Empty or invalid Mistral response");
       return NextResponse.json(
         { error: "Failed to get font recommendations. Please try again." },
         { status: 500 },
       );
     }
 
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-    
-    // Parse the structured JSON response
+    // Parse the JSON response
     let selectedFontNames: string[] = [];
     try {
       const parsed = JSON.parse(content);
       // Limit to 10 fonts max as a safeguard
       selectedFontNames = (parsed.fonts || []).slice(0, 10);
     } catch {
-      console.error("Failed to parse Cerebras response:", content);
+      console.error("Failed to parse Mistral response:", content);
       return NextResponse.json(
         { error: "Failed to parse font recommendations. Please try again." },
         { status: 500 },
