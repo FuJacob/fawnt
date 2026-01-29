@@ -30,12 +30,12 @@ RULES:
 
 Consider mood, use case, and visual style when selecting.`;
 
-    const userMessage = `Find 8 fonts for: "${prompt}"
+    const userMessage = `Find 16 fonts for: "${prompt}"
 
 Available fonts:
 ${fontNames.slice(0, 400).join(", ")}
 
-Return exactly 8 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
+Return exactly 16 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
 
     // Call Mistral API with JSON mode
     const chatResponse = await mistral.chat.complete({
