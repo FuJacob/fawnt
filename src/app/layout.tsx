@@ -11,7 +11,7 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "find fonts - fawnt",
+  title: "fawnt - find fonts",
   description: "Describe what you need, get perfect fonts from Google Fonts",
 };
 
