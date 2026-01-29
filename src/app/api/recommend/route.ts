@@ -39,7 +39,7 @@ Return exactly 16 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
 
     // Call Mistral API with JSON mode
     const chatResponse = await mistral.chat.complete({
-      model: "ministral-14b-latest",
+      model: process.env.MISTRAL_MODEL || "ministral-14b-latest",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userMessage },
