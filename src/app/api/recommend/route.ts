@@ -63,8 +63,7 @@ Return exactly 8 font names as JSON: {"fonts": ["Font1", "Font2", ...]}`;
     let selectedFontNames: string[] = [];
     try {
       const parsed = JSON.parse(content);
-      // Limit to 10 fonts max as a safeguard
-      selectedFontNames = (parsed.fonts || []).slice(0, 10);
+      selectedFontNames = parsed.fonts || [];
     } catch {
       console.error("Failed to parse Mistral response:", content);
       return NextResponse.json(
