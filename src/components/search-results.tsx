@@ -30,7 +30,7 @@ export function SearchResults({
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
       {fonts.length > 0 && (
         <div className="mb-6 sm:mb-8">
-          <label className="block text-sm font-medium text-muted-foreground mb-2">
+          <label className="block text-sm font-medium text-muted-foreground/50 mb-2">
             Try your own text
           </label>
           <Input
