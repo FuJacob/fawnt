@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Card, CardContent } from '@/components/ui/card';
-import { HeartIcon as HeartOutline } from '@heroicons/react/24/outline';
-import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
-import type { GoogleFont } from '@/lib/google-fonts';
+import { Card, CardContent } from "@/components/ui/card";
+import { HeartIcon as HeartOutline } from "@heroicons/react/24/outline";
+import { HeartIcon as HeartSolid } from "@heroicons/react/24/solid";
+import type { GoogleFont } from "@/lib/google-fonts";
 
 const MAX_VARIANTS = 7;
 
 function formatVariant(v: string): string {
-  if (v === 'regular') return '400';
-  if (v === 'italic') return '400i';
-  if (v.endsWith('italic')) return v.replace('italic', '') + 'i';
+  if (v === "regular") return "400";
+  if (v === "italic") return "400i";
+  if (v.endsWith("italic")) return v.replace("italic", "") + "i";
   return v;
 }
 
@@ -22,8 +22,14 @@ interface FontCardProps {
   onToggleLike?: () => void;
 }
 
-export function FontCard({ font, previewText, onSelect, liked, onToggleLike }: FontCardProps) {
-  const googleFontsUrl = `https://fonts.google.com/specimen/${font.family.replace(/ /g, '+')}`;
+export function FontCard({
+  font,
+  previewText,
+  onSelect,
+  liked,
+  onToggleLike,
+}: FontCardProps) {
+  const googleFontsUrl = `https://fonts.google.com/specimen/${font.family.replace(/ /g, "+")}`;
   const displayedVariants = font.variants.slice(0, MAX_VARIANTS);
   const remainingCount = font.variants.length - MAX_VARIANTS;
 
@@ -35,7 +41,7 @@ export function FontCard({ font, previewText, onSelect, liked, onToggleLike }: F
       <CardContent className="p-4 sm:p-6">
         {/* Header row with title and action buttons */}
         <div className="mb-3 sm:mb-4 flex items-center justify-between gap-2">
-          <span className="font-bold text-foreground text-base sm:text-lg truncate">
+          <span className="font-bold text-foreground text-base sm:text-lg truncate border-b-2 border-green-500 pb-0.5">
             {font.family}
           </span>
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
@@ -72,15 +78,15 @@ export function FontCard({ font, previewText, onSelect, liked, onToggleLike }: F
             )}
           </div>
         </div>
-        
+
         {/* Preview text */}
         <p
           className="text-xl sm:text-2xl leading-relaxed text-foreground min-h-16 sm:min-h-18"
           style={{ fontFamily: `"${font.family}", sans-serif` }}
         >
-          {previewText || 'The quick brown fox jumps over the lazy dog'}
+          {previewText || "The quick brown fox jumps over the lazy dog"}
         </p>
-        
+
         {/* Bottom row: category + variant tags */}
         <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-1">
           <span className="text-[9px] sm:text-[10px] font-medium text-muted-foreground/70 lowercase bg-muted/50 px-1.5 py-0.5 rounded">
