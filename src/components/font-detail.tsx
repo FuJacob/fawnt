@@ -98,7 +98,7 @@ export function FontDetail({ font, previewText, onBack, liked, onToggleLike }: F
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
             <button
               onClick={onBack}
-              className="btn-duo w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full border-2 border-border bg-card text-muted-foreground hover:border-foreground hover:text-foreground shrink-0"
+              className="btn-duo w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full border-2 border-border bg-card text-muted-foreground hover:text-foreground shrink-0"
               aria-label="Go back"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
@@ -112,7 +112,7 @@ export function FontDetail({ font, previewText, onBack, liked, onToggleLike }: F
               href={googleFontsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-duo px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium rounded-full border border-border text-muted-foreground hover:border-secondary hover:text-secondary"
+              className="btn-duo px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium rounded-full border border-border bg-card text-muted-foreground hover:text-foreground"
               aria-label="View on Google Fonts"
             >
               <span className="hidden sm:inline">Get on Google Fonts</span>
@@ -124,7 +124,7 @@ export function FontDetail({ font, previewText, onBack, liked, onToggleLike }: F
                 className={`btn-duo w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${
                   liked
                     ? "bg-destructive border-destructive text-white scale-110"
-                    : "bg-card border-border text-muted-foreground hover:border-destructive hover:text-destructive"
+                    : "bg-card border-border text-muted-foreground hover:text-foreground"
                 }`}
                 aria-label={liked ? "Unlike font" : "Like font"}
               >

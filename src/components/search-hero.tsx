@@ -93,7 +93,7 @@ export function SearchHero({
                 key={text}
                 type="button"
                 onClick={() => onQuickSubmit(text)}
-                className="btn-duo flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-2xl border-2 border-border bg-card/80 text-muted-foreground hover:border-primary hover:text-primary"
+                className="btn-duo flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-medium rounded-2xl border-2 border-border bg-card/80 text-muted-foreground hover:text-foreground"
               >
                 <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 {text}

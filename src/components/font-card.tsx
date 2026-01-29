@@ -44,7 +44,7 @@ export function FontCard({ font, previewText, onSelect, liked, onToggleLike }: F
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="btn-duo px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium rounded-full border border-border text-muted-foreground hover:border-secondary hover:text-secondary"
+              className="btn-duo px-2 sm:px-2.5 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium rounded-full border border-border bg-card text-muted-foreground hover:text-foreground"
               aria-label="View on Google Fonts"
             >
               <span className="hidden sm:inline">Get on Google Fonts</span>
@@ -59,7 +59,7 @@ export function FontCard({ font, previewText, onSelect, liked, onToggleLike }: F
                 className={`btn-duo w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border ${
                   liked
                     ? "bg-destructive border-destructive text-white scale-110"
-                    : "bg-card border-border text-muted-foreground hover:border-destructive hover:text-destructive"
+                    : "bg-card border-border text-muted-foreground hover:text-foreground"
                 }`}
                 aria-label={liked ? "Unlike font" : "Like font"}
               >

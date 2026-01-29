@@ -30,7 +30,7 @@ export function Navbar({ onLogoClick, likedCount, onLikedClick }: NavbarProps) {
         </div>
         <button
           onClick={onLikedClick}
-          className="btn-duo relative shrink-0 w-11 h-11 flex items-center justify-center rounded-full border-2 border-border bg-card/80 backdrop-blur-md shadow-sm hover:border-destructive hover:text-destructive text-muted-foreground"
+          className="btn-duo relative shrink-0 w-11 h-11 flex items-center justify-center rounded-full border-2 border-border bg-card/80 backdrop-blur-md shadow-sm hover:text-foreground text-muted-foreground"
           aria-label="Liked fonts"
         >
           {likedCount > 0 ? (
