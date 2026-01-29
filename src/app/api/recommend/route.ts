@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const systemPrompt = `You are an expert typography consultant. Recommend exactly 8 fonts from the provided list that match the user's description.
 
 RULES:
-- Return EXACTLY 8 font names, no more, no less
+- Return EXACTLY 16 font names ordered by what you think fits best based on prompt, no more, no less
 - Only use fonts from the provided list
 - Mix display fonts with body fonts for variety
 - Return as JSON object with "fonts" array
