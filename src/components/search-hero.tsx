@@ -87,7 +87,7 @@ export function SearchHero({
         </form>
 
         {!hasResults && (
-          <div className="flex flex-wrap justify-center gap-2 mt-6 sm:mt-8">
+          <div className="flex flex-wrap justify-center gap-2 mt-6 sm:mt-8 pb-2">
             {EXAMPLE_PROMPTS.map(({ text, icon: Icon }) => (
               <button
                 key={text}

@@ -10,8 +10,6 @@ const fontResponseSchema = {
     fonts: {
       type: "array",
       items: { type: "string" },
-      minItems: 6,
-      maxItems: 10,
       description: "Array of exactly 8 font family names"
     }
   },

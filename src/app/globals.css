@@ -190,29 +190,29 @@
 /* Duolingo-style button with bottom border/shadow */
 .btn-duo {
   position: relative;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.2);
-  transition: all 0.1s ease;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.15);
+  transition: transform 0.1s ease, border-bottom-width 0.1s ease;
 }
 
 .btn-duo:hover {
-  transform: translateY(-2px);
-  border-bottom-width: 6px;
+  transform: translateY(-1px);
+  border-bottom-width: 4px;
 }
 
 .btn-duo:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
   border-bottom-width: 2px;
 }
 
 /* Duolingo card style with colored shadow */
 .card-duo {
   box-shadow: 0 2px 0 0 var(--border);
-  transition: all 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card-duo:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 0 0 var(--border);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 0 var(--border);
 }
 
 .card-duo:active {
