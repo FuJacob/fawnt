@@ -12,7 +12,13 @@ export async function recommendFonts(prompt: string): Promise<GoogleFont[]> {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to get recommendations');
+    if (response.status === 429) {
+      throw new Error('Too many requests. Please wait a moment and try again.');
+    }
+    if (response.status >= 500) {
+      throw new Error('Server error. Please try again in a few seconds.');
+    }
+    throw new Error('Failed to get recommendations. Please try again.');
   }
 
   const data: RecommendFontsResponse = await response.json();

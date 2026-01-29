@@ -122,14 +122,6 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply text-foreground;
-    background-image: url('/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-  }
 }
 
 /* Duolingo-style animations */
@@ -148,7 +140,8 @@
 }
 
 @keyframes wiggle {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-1deg);
   }
   50% {
@@ -169,7 +162,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
